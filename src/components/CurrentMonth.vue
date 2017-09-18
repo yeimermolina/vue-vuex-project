@@ -30,6 +30,7 @@ export default {
       }else{
         this.$store.commit('setCurrentMonth', this.month - 1);
       }
+      this.$state.commit('eventFormActive', false);
       
     },
     inc(){
@@ -39,6 +40,7 @@ export default {
       }else{
         this.$store.commit('setCurrentMonth', this.month + 1);
       }
+      this.$state.commit('eventFormActive', false);
     }
   }
 }
