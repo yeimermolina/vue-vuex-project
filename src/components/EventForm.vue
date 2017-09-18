@@ -25,9 +25,13 @@ export default {
     },
     create(){
       if(this.description.length > 0){
-        this.$store.commit('eventFormActive', false);
-        this.$store.commit('addEvent', this.description);
-        this.description = '';
+        
+        this.$store.dispatch('addEvent', this.description).then(_ => {
+          //Como se esta retornando una promesa en el action addEvent, se puede hacer el then
+          this.description = '';
+          this.$store.commit('eventFormActive', false);
+        });
+        
       }
       
     }
